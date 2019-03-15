@@ -3,8 +3,8 @@ Section: admin
 Priority: optional
 Maintainer: Equipo LliureX <lliurex@gva.es>
 Uploaders:Raul Rodrigo Segura <lliurex_devel3@edu.gva.es>,  David Montalva Furio <montalva_dav@gva.es>, Hector Garcia Huerta <lliurex_devel1@edu.gva.es>, Daniel Duran Vecino <daduve@gmail.com>, M.Angel Juan <m.angel.juan@gmail.com>
-Build-Depends: debhelper (>= 7.0), llxcfg-dev, zero-dev, llxsrchelper
-Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 7.0), zero-dev, llxsrchelper, python3-poinstaller
+Standards-Version: 4.1.2
 
 Package: home-eraser-gui
 Architecture: all
