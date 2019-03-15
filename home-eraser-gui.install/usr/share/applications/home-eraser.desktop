@@ -1,0 +1,22 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Home Eraser
+Name[es]=Home Eraser
+Name[qcv]=Home Eraser
+Name[ca_ES@valencia]=Home Eraser
+Name[ca_ES.UTF-8@valencia]=Home Eraser
+TryExec=/usr/sbin/home-eraser-gui
+Comment=Delete obsolete files from /home user and from server in server.
+Comment[qcv]=Reinicialitza l'escriptori per a deixar-lo en el format de LliureX per defecte.
+Comment[ca_ES@valencia]=Reinicialitza l'escriptori per a deixar-lo en el format de LliureX per defecte.
+Comment[ca_ES.UTF-8@valencia]=Reinicialitza l'escriptori per a deixar-lo en el format de LliureX per defecte.
+Comment[ca_ES]=Reinicialitza l'escriptori per a deixar-lo en el format de LliureX per defecte.
+Comment[es]=Borra los datos de los usuarios de /home y del server en /net.
+StartupNotify=true
+Exec=/usr/sbin/home-eraser-gui
+Icon=/usr/share/home-eraser/rsrc/home-eraser-icon.svg
+Terminal=false
+Type=Application
+X-GNOME-Settings-Panel=home-eraser
+X-Unity-Settings-Panel=home-eraser
+Categories=GTK;System;Filesystem;LliureX-Administration;

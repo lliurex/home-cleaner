@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-28 12:59+0200\n"
+"PO-Revision-Date: 2018-06-28 13:04+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:34
+msgid "Usuario:"
+msgstr "Usuario:"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:73
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:102
+msgid "Login"
+msgstr "Entrar"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:165
+msgid "Apply"
+msgstr "Aplicar"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:224
+msgid "Borrar los datos de los alumnos"
+msgstr "Borrar los datos de los alumnos"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:238
+msgid "Borrar los datos de los profesores"
+msgstr "Borrar los datos de los profesores"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:253
+msgid "Borrar los datos de los admin"
+msgstr "Borrar los datos de los admin"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:283
+msgid ""
+"Datos Locales\n"
+"/home"
+msgstr ""
+"Datos Locales\n"
+"/home"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:301
+msgid ""
+"Datos Servidor\n"
+"/net"
+msgstr ""
+"Datos Servidor\n"
+"/net"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:460
+msgid "Clientes pesados conectados :"
+msgstr "Clientes pesados conectados :"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:475
+msgid "0"
+msgstr "0"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/rsrc/home-eraser.ui:497
+msgid "Home Eraser"
+msgstr "Home Eraser"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:175
+msgid "Validating user..."
+msgstr "Validando usuario....."
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:203
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:230
+msgid "Invalid user, please only net admin users."
+msgstr "Usuario no válido, por favor solo usuarios administradores de la red."
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:291
+msgid "Are you sure you want to delete?"
+msgstr "¿Estas seguro que quieres borrar lo seleccionado?"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:303
+msgid "Working........"
+msgstr "Trabajando........"
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:307
+msgid "You didn't select any option to delete."
+msgstr "No has seleccionado ninguna opción."
+
+#: ../home-eraser-gui.install/usr/share/home-eraser/HomeEraser.py:340
+msgid "Finished. Log is found in /var/log/home-eraser.log "
+msgstr "Terminado. El LOG puedes revisarlo en /var/log/home-eraser.log"

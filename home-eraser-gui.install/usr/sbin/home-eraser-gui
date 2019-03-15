@@ -1,0 +1,14 @@
+#! /usr/bin/python3
+
+import sys
+
+sys.path.append('/usr/share/home-eraser/')
+
+import HomeEraser
+
+if __name__=="__main__":
+	
+	args={}
+	args["gui"]=True
+	args["server"]="server"
+	ls=HomeEraser.HomeEraser(args)
