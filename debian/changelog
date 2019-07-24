@@ -1,3 +1,9 @@
+home-eraser (0.1.9) bionic; urgency=high
+
+  * Adding svg to make desktop icon in rules 
+
+ -- Daniel Duran Vecino <daduve@gmail.com>  Wed, 24 Jul 2019 11:37:52 +0200
+
 home-eraser (0.1.8) bionic; urgency=medium
 
   * Bionic release
