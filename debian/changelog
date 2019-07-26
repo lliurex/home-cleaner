@@ -1,3 +1,9 @@
+home-eraser (0.1.10) bionic; urgency=medium
+
+  * Add translations.
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Fri, 26 Jul 2019 14:12:39 +0200
+
 home-eraser (0.1.9) bionic; urgency=high
 
   * Adding svg to make desktop icon in rules 
