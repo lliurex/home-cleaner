@@ -1,3 +1,9 @@
+home-eraser (0.1.11) bionic; urgency=medium
+
+  * Added metainfo
+
+ -- Juanma1980 <juanma1980@gmail.com>  Mon, 23 Dec 2019 11:33:57 +0100
+
 home-eraser (0.1.10) bionic; urgency=medium
 
   * Add translations.
