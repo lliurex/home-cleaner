@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+<id>home-eraser_zmd</id>
+<metadata_license>CC0-1.0</metadata_license>
+<name>home-eraser</name>
+<name xml:lang="en">Home Eraser</name>
+<name xml:lang="es">Home Eraser</name>
+<name xml:lang="qcv">Home Eraser</name>
+<summary>Delete home directories from server and heavy customer</summary>
+<summary xml:lang="es">Borra los directorios home del servidor y de los clientes pesados</summary>
+<summary xml:lang="qcv">Elimina els directoris personals del servidor i dels clients pesats</summary>
+<description>
+<p>Delete home directories from server and heavy customer.</p>
+<p xml:lang="es">Borra los directorios home del servidor y de los clientes pesados.</p>
+<p xml:lang="qcv">Elimina els directoris personals del servidor i dels clients pesats.</p>
+</description>
+<categories>
+<category>Lliurex</category>
+<category>Zomando</category>
+<category>Utility</category>
+</categories>
+<icon type="cached">home-eraser</icon>
+
+<keywords>
+<keyword>home</keyword>
+<keyword>eraser</keyword>
+<keyword>home-eraser</keyword>
+<keyword>Zomando</keyword>
+</keywords>
+<keywords xml:lang="en">
+<keyword>Home</keyword>
+<keyword>Eraser</keyword>
+<keyword>Zomando</keyword>
+</keywords>
+<keywords xml:lang="es">
+<keyword>Zomando</keyword>
+</keywords>
+<keywords xml:lang="qcv">
+<keyword>Zomando</keyword>
+
+</keywords>
+<screenshots>
+</screenshots>
+</component>
