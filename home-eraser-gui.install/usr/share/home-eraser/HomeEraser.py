@@ -157,7 +157,7 @@ class HomeEraser:
 	
 	def set_css_info(self):
 		
-		self.style_provider=Gtk.CssProvider()
+		self.style_provider=Gtk.CssProvider()                     
 		f=Gio.File.new_for_path("/usr/share/home-eraser/HomeEraser.css")
 		self.style_provider.load_from_file(f)
 		Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),self.style_provider,Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
@@ -239,6 +239,7 @@ class HomeEraser:
 				if g in self.n4d_man.user_groups:
 					group_found=True
 					break
+
 					
 			if group_found:
 				self.n4d_man.get_client_list()
@@ -347,7 +348,7 @@ class HomeEraser:
 			
 		except Exception as e:
 			self.dprint(e)
-			print ("[HomeEraserGUI] %s"%e)
+			print ("[HomeEraserGUI](apply_button_clicked) %s"%e)
 			return [False,str(e)]
 		
 	#def check_changes
@@ -380,7 +381,7 @@ class HomeEraser:
 			
 		except Exception as e:
 			self.dprint(e)
-			print ("[HomeEraserGUI] %s"%e)
+			print ("[HomeEraserGUI](sure_delete) %s"%e)
 			return [False,str(e)]
 		
 	#def_sure_delete
@@ -415,10 +416,11 @@ class HomeEraser:
 				rnet=self.n4d_man.delete_net_homes(self.user_val,delete[self.net])
 				if rnet[0]:
 					self.resume_net=rnet[1]
-					self.dprint("")
-					self.dprint("Summary for paths in /NET deleted:")
-					for i in rnet[1]:
-						self.dprint(i)
+					if self.resume_net:
+						self.dprint("")
+						self.dprint("Summary for paths in /NET deleted:")
+						for i in rnet[1]:
+							self.dprint(i)
 			
 			
 			
@@ -426,7 +428,7 @@ class HomeEraser:
 					
 		except Exception as e:
 			self.dprint(e)
-			print ("[HomeEraserGUI] %s"%e)
+			print ("[HomeEraserGUI](apply_delete_methods)%s"%e)
 			return [False,str(e)]
 		
 		

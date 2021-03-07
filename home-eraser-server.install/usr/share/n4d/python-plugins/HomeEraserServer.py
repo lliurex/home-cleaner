@@ -3,15 +3,19 @@ import pwd
 import logging
 import shutil
 
+import n4d.server.core as n4dcore
+import n4d.responses
+
 class HomeEraserServer:
 	
 	logging.basicConfig(format = '%(asctime)s %(message)s',datefmt = '%m/%d/%Y %I:%M:%S %p',filename = '/var/log/home-eraser.log',level=logging.DEBUG)
 	
-	DEBUG=False
+	DEBUG=True
 	
 	def lprint(self,arg):
 		
 		logging.debug(arg)
+		return n4d.responses.build_successful_call_response(0)
 		
 	#def_lprint
 	
@@ -69,7 +73,7 @@ class HomeEraserServer:
 								
 							self.dprint("Testing group for: %s    with uid: %s"%(dir_path,uid))
 							self.dprint("In groups: %s"%groups_delete)
-							if self.insert_to_delete(uid, groups_delete)[0]:
+							if self.insert_to_delete(uid, groups_delete)['return'][0]:
 								self.dprint("RESUME: +++++...ADDED to delete list")
 								home_list[dirname]={}
 								home_list[dirname]["path"]=dir_path
@@ -87,12 +91,12 @@ class HomeEraserServer:
 				if ( len(home_list) > 0 ):
 					deleted=self.delete_home_local(home_list)[1]
 
-			return [True, deleted]
+			return n4d.responses.build_successful_call_response([True, deleted])
 		
 		except Exception as e:
-			print ("[HomeEraserServer] %s"%e)
-			self.dprint ("[HomeEraserServer] %s"%e)
-			return [False,str(e)]
+			print ("[HomeEraserServer](delete_home) %s"%e)
+			self.dprint ("[HomeEraserServer](delete_home) %s"%e)
+			return n4d.responses.build_failed_call_response(False,str(e),0)
 			
 	#def_delete_home
 		
@@ -108,32 +112,32 @@ class HomeEraserServer:
 					self.dprint("testing group students.....")
 					arg1=20000
 					arg2=50000
-					if self.test_user(uid,arg1,arg2)[0]:
-						return[True]
+					if self.test_user(uid,arg1,arg2)['return'][0]:
+						return n4d.responses.build_successful_call_response([True])
 					
 				elif ( str(group) == "teachers" ):
 					self.dprint("testing group teachers.....")
 					arg1=5000
 					arg2=10000
-					if self.test_user(uid,arg1,arg2)[0]:
-						return[True]
+					if self.test_user(uid,arg1,arg2)['return'][0]:
+						return n4d.responses.build_successful_call_response([True])
 					
 				elif ( str(group) == "admins" ):
 					self.dprint("testing group admins.....")
 					arg1=1042
 					arg2=5000
-					if self.test_user(uid,arg1,arg2)[0]:
-						return[True]
+					if self.test_user(uid,arg1,arg2)['return'][0]:
+						return n4d.responses.build_successful_call_response([True])
 				else:
 					self.dprint("....this group cannot be deleted")
 					
-			return[False]
+			return n4d.responses.build_successful_call_response([False])
 			
 		
 		except Exception as e:
-			print ("[HomeEraserServer] %s"%e)
-			self.dprint ("[HomeEraserServer] %s"%e)
-			return [False,str(e)]
+			print ("[HomeEraserServer](insert_to_delete) %s"%e)
+			self.dprint ("[HomeEraserServer](insert_to_delete) %s"%e)
+			return n4d.responses.build_failed_call_response(False,str(e),1)
 			
 	#def_insert_to_delete
 
@@ -145,14 +149,14 @@ class HomeEraserServer:
 		try:
 			if (  uid >= arg1 ) & ( uid  < arg2  ):
 				self.dprint("....is include in selected groups to delete")
-				return [True]
+				return n4d.responses.build_successful_call_response([True])
 			else:
-				return [False]
+				return n4d.responses.build_successful_call_response([False])
 			
 		except Exception as e:
-			print ("[HomeEraserServer] %s"%e)
-			self.dprint ("[HomeEraserServer] %s"%e)
-			return [False,str(e)]
+			print ("[HomeEraserServer](test_user) %s"%e)
+			self.dprint ("[HomeEraserServer](test_user) %s"%e)
+			return n4d.responses.build_failed_call_response(False,str(e),2)
 			
 	#def_test_user
 
@@ -175,12 +179,12 @@ class HomeEraserServer:
 					
 					
 			self.dprint("Deleted this paths: %s"%deleted)
-			return [True, deleted]
+			return n4d.responses.build_successful_call_response([True,deleted])
 		
 		except Exception as e:
-			print ("[HomeEraserServer] %s"%e)
-			self.dprint("[HomeEraserServer] %s"%e)
-			return [False,str(e)]
+			print ("[HomeEraserServer](delete_home_local) %s"%e)
+			self.dprint("[HomeEraserServer](delete_home_local) %s"%e)
+			return n4d.responses.build_failed_call_response(False,str(e),3)
 			
 	#def_delete_home_local
 	
@@ -218,22 +222,20 @@ class HomeEraserServer:
 							self.dprint("Adding to to delete.....")
 							net_list[dirname]={}
 							net_list[dirname]["path"]=dir_path
-				#self.dprint("------------RESUME-------------")			
-				#self.dprint("Deleting this paths: %s"%net_list)	
+				self.dprint("------------RESUME-------------")			
+				self.dprint("Deleting this paths: %s"%net_list)	
 				ret=self.delete_home_local(net_list)
-				
-				if ret[0]:
-					deleted=deleted+ret[1]
-
+				if ret['return'][0]:
+					deleted=deleted+ret['return'][1]
 			if len(deleted)>0:
 				objects["Golem"].regenerate_net_files()
 		
-			return [True, deleted]
+			return n4d.responses.build_successful_call_response([True, deleted])
 		
 		except Exception as e:
-			print ("[HomeEraserServer] %s"%e)
-			self.dprint ("[HomeEraserServer] %s"%e)
-			return [False,str(e)]
+			print ("[HomeEraserServer](delete_net_home) %s"%e)
+			self.dprint ("[HomeEraserServer](delete_net_home) %s"%e)
+			return n4d.responses.build_failed_call_response(False,str(e),4)
 	#def_delete_net_home
 		
 #class HomeEraserServer

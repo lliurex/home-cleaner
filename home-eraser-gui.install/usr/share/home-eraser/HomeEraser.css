@@ -91,7 +91,7 @@
         color: white;
 }
 
-.entry:insensitive
+.entry:disabled
 {
         background-color: #bbbbbb;
         border-bottom: 1px solid transparent;

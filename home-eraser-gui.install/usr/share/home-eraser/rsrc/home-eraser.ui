@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkAdjustment" id="adjustment1">
@@ -303,7 +303,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="xpad">10</property>
                 <property name="label" translatable="yes">Datos Servidor
 /net</property>
                 <property name="justify">center</property>
@@ -323,7 +322,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="use_stock">True</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
@@ -339,7 +337,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="use_stock">True</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
@@ -355,7 +352,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="use_stock">True</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
@@ -371,7 +367,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="use_stock">True</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
@@ -387,7 +382,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="use_stock">True</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
@@ -403,7 +397,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="use_stock">True</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
               </object>
               <packing>
@@ -413,8 +406,11 @@
             </child>
             <child>
               <object class="GtkSeparator" id="separator1">
+                <property name="width_request">150</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -503,6 +499,9 @@
     <property name="title" translatable="yes">Home Eraser</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkBox" id="main_box">
         <property name="visible">True</property>
