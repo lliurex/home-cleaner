@@ -1,8 +1,0 @@
-[SETUP]
-type=python
-path=HomeEraserServer.py
-class=HomeEraserServer
-[METHODS]
-delete_home=sudo,admins,admin
-delete_net_home=sudo,admins,admin
-lprint=sudo,admins,admin
