@@ -1,0 +1,51 @@
+{
+    "SETUP": {
+        "type": "python",
+        "path": "HomeEraserServer.py",
+        "class": "HomeEraserServer"
+    },
+    "METHODS": {
+        "lprint": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        },
+        "dprint": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        },
+        "delete_home": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        },
+        "insert_to_delete": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        },
+        "test_user": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        },
+        "delete_home_local": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        },
+        "delete_net_home": {
+            "allowed_groups": [
+                "sudo",
+                "admins"
+            ]
+        }
+    }
+}
