@@ -1,6 +1,0 @@
-[SETUP]
-type=python
-path=HomeEraserClient.py
-class=HomeEraserClient
-[METHODS]
-delete_home=sudo,admins,admin
