@@ -375,9 +375,27 @@ class HomeEraser:
 			self.detect_connected_clients_cancelled=True
 			self.spinner.stop()
 			self.txt_apply.set_markup("<span foreground='blue'>"+_("Finished. Log is found in /var/log/home-eraser.log ")+"</span>")
-			
-			#Gtk.main_quit()
-			#sys.exit(0)
+
+
+			#Do you want to execute again? or Exit.
+			dialog=Dialog.QuestionDialog(self.main_window,_(u"HOME ERASER"),_(u"Do you want to execute it again?"))
+			response=dialog.run()
+			dialog.destroy()
+			#if response == Gtk.ResponseType.YES:
+			if response == Gtk.ResponseType.OK:
+				
+				self.apply_button.set_sensitive(True)
+				self.checkb1.set_sensitive(True)
+				self.checkb2.set_sensitive(True)
+				self.checkb3.set_sensitive(True)
+				self.checkb4.set_sensitive(True)
+				self.checkb5.set_sensitive(True)
+				self.checkb6.set_sensitive(True)
+
+			else:
+				#Gtk.main_quit()
+				#sys.exit(0)
+				pass
 			
 		except Exception as e:
 			self.dprint(e)
