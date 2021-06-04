@@ -6,7 +6,7 @@ import n4d.responses
 
 class HomeEraserClient:
 	
-	DEBUG=False
+	DEBUG=True
 	
 	def dprint(self,arg):
 		
@@ -61,7 +61,7 @@ class HomeEraserClient:
 								
 							self.dprint("Testing group for: %s    with uid: %s"%(dir_path,uid))
 							self.dprint("In groups: %s"%groups_delete)
-							if self.insert_to_delete(uid, groups_delete)[0]:
+							if self.insert_to_delete(uid, groups_delete)['return'][0]:
 								self.dprint("RESUME: +++++...ADDED to delete list")
 								home_list[dirname]={}
 								home_list[dirname]["path"]=dir_path
@@ -78,7 +78,7 @@ class HomeEraserClient:
 	
 				
 				if ( len(home_list) > 0 ):
-					deleted=self.delete_home_local(home_list)[1]
+					deleted=self.delete_home_local(home_list)['return'][1]
 
 			return n4d.responses.build_successful_call_response([True, deleted])
 		
@@ -101,21 +101,24 @@ class HomeEraserClient:
 					self.dprint("testing group students.....")
 					arg1=20000
 					arg2=50000
-					if self.test_user(uid,arg1,arg2)[0]:
-						return n4d.responses.build_successful_call_response([True])
+					student=self.test_user(uid,arg1,arg2)
+					print("[HomeEraserClient](insert_to_delete) Is student? %s"%student)
+					if student['status'] == 0:
+						if student['return'][0]:
+							return n4d.responses.build_successful_call_response([True])
 					
 				elif ( str(group) == "teachers" ):
 					self.dprint("testing group teachers.....")
 					arg1=5000
 					arg2=10000
-					if self.test_user(uid,arg1,arg2)[0]:
+					if self.test_user(uid,arg1,arg2)['return'][0]:
 						return n4d.responses.build_successful_call_response([True])
 					
 				elif ( str(group) == "admins" ):
 					self.dprint("testing group admins.....")
 					arg1=1042
 					arg2=5000
-					if self.test_user(uid,arg1,arg2)[0]:
+					if self.test_user(uid,arg1,arg2)['return'][0]:
 						return n4d.responses.build_successful_call_response([True])
 				else:
 					self.dprint("....this group cannot be deleted")
@@ -162,6 +165,7 @@ class HomeEraserClient:
 					self.dprint("Path deleted: %s"%home_list[delete]["path"] )
 					deleted.append(home_list[delete]["path"])
 					try:
+						#self.dprint("DELETING......: %s"%home_list[delete]["path"] )
 						shutil.rmtree(home_list[delete]["path"])
 					except Exception as r_ex:
 						self.dprint("[HomeEraserClient] %s"%r_ex)
