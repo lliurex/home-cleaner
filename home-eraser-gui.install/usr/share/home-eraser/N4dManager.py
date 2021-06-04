@@ -125,7 +125,11 @@ class N4dManager:
 			#tmp=xmlrpc.client.ServerProxy("https://server:9779",allow_none=True,context=context)
 			#resolve=tmp.delete_net_home(validation,"HomeEraserServer", groups_to_delete)
 			resolve=self.client.HomeEraserServer.delete_net_home(groups_to_delete)
-			if resolve[0]:
+			self.mprint('resolve: %s'%resolve)
+			if not resolve[0]:
+				print ("[HomeEraserN4DManager](delete_net_homes) ERROR: %s"%resolve[1])
+				return [False,resolve[1]]
+			else:
 				resume=resolve[1]
 					
 			return[True,resume]
@@ -152,17 +156,19 @@ class N4dManager:
 				for ip in clients:
 					self.mprint("Deleting client: %s"%ip)
 					#ANTIGUA LLAMADA N4D
-					#tmp=xmlrpc.client.ServerProxy("https://%s:9779"%ip,allow_none=True,context=context)
-					#resolve=tmp.delete_home(validation,"HomeEraserClient", groups_to_delete)
-					resolve=self.client.HomeEraserClient.delete_home(groups_to_delete)
-					if resolve[0]:
-						resume[ip]=resolve[1]
+					tmp=xmlrpc.client.ServerProxy("https://%s:9779"%ip,allow_none=True,context=context)
+					resolve=tmp.delete_home(validation,"HomeEraserClient", groups_to_delete)
+					#resolve=self.client.HomeEraserClient.delete_home(groups_to_delete)
+					self.mprint("[HomeEraserN4DManager](delete_clients_homes) resolve IP: %s: %s"%(ip,resolve))
+					if resolve['return'][0]:
+						resume[ip]=resolve['return'][1]
 				
 			#Delete homes in Server
 			#ANTIGUA LLAMADA N4D
 			#tmp=xmlrpc.client.ServerProxy("https://server:9779",allow_none=True,context=context)
 			#resolve=tmp.delete_home(validation,"HomeEraserServer", groups_to_delete)
 			resolve=self.client.HomeEraserServer.delete_home(groups_to_delete)
+			self.mprint("[HomeEraserN4DManager](delete_clients_homes) resolve In server: %s"%(resolve))
 			if resolve[0]:
 				resume["server"]=resolve[1]
 					
