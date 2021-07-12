@@ -1,3 +1,9 @@
+home-eraser (0.1.11.2) focal; urgency=medium
+
+  * Fix bug with lag detecting clients
+
+ -- Daniel Duran <daduve@gmail.com>  Mon, 12 Jul 2021 09:47:06 +0200
+
 home-eraser (0.1.11.1) focal; urgency=medium
 
   * First version to Focal
