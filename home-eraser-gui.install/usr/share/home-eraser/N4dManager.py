@@ -148,6 +148,7 @@ class N4dManager:
 	def delete_clients_homes(self,validation,clients,groups_to_delete):
 				
 		resume={}
+		resume_fail={}
 		
 		try:
 			context=ssl._create_unverified_context()
@@ -156,13 +157,19 @@ class N4dManager:
 				for ip in clients:
 					self.mprint("Deleting client: %s"%ip)
 					#ANTIGUA LLAMADA N4D
-					tmp=xmlrpc.client.ServerProxy("https://%s:9779"%ip,allow_none=True,context=context)
-					resolve=tmp.delete_home(validation,"HomeEraserClient", groups_to_delete)
+					try:
+						tmp=xmlrpc.client.ServerProxy("https://%s:9779"%ip,allow_none=True,context=context)
+						resolve=tmp.delete_home(validation,"HomeEraserClient", groups_to_delete)
+					except Exception as e:
+						print ("[HomeEraserN4DManager](delete_clients_homes) ERROR: %s"%e)
+						self.lprint (validation,"[HomeEraserServer](delete_clients_homes) %s"%e)
 					#resolve=self.client.HomeEraserClient.delete_home(groups_to_delete)
 					self.mprint("[HomeEraserN4DManager](delete_clients_homes) resolve IP: %s: %s"%(ip,resolve))
 					if resolve['return'][0]:
 						resume[ip]=resolve['return'][1]
-				
+					else:
+						resume_fail[ip]=resolve['return'][1]
+						
 			#Delete homes in Server
 			#ANTIGUA LLAMADA N4D
 			#tmp=xmlrpc.client.ServerProxy("https://server:9779",allow_none=True,context=context)
@@ -172,7 +179,7 @@ class N4dManager:
 			if resolve[0]:
 				resume["server"]=resolve[1]
 					
-			return[True,resume]
+			return[True,resume,resume_fail]
 	
 		except Exception as e:
 			print ("[HomeEraserN4DManager](delete_clients_homes) ERROR: %s"%e)
@@ -188,7 +195,7 @@ class N4dManager:
 	def get_client_list(self):
 		
 		try:
-			self.ips_connected=[]
+			self.ips_connected2=[]
 			#Forzar la lectura del listado de clientes
 			#self.mprint(self.client.manual_client_list_check("","VariablesManager"))
 			self.mprint(self.client.check_clients(True))
@@ -200,8 +207,9 @@ class N4dManager:
 			for item in self.ret:
 				if self.ret[item]["missed_pings"]<1:
 					count+=1
-				self.ips_connected.append(self.ret[item]["ip"])
-					
+				self.ips_connected2.append(self.ret[item]["ip"])
+			
+			self.ips_connected=self.ips_connected2		
 			self.detected_clients=count
 			self.mprint("Clients connected N4D: %s"%self.detected_clients)
 			
